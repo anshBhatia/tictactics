@@ -1,0 +1,57 @@
+.game-cell {
+  width: 119.333px;
+  height: 119.333px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.game-cell:hover {
+  background-color: rgba(205, 155, 90, 0.1);
+}
+
+.game-cell.opponent-turn {
+  background-color: #f7f7f7;
+}
+
+.cell-content {
+  width: 84px;
+  height: 84px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-piece {
+  width: 84px;
+  height: 84px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: opacity 0.5s ease;
+}
+
+.x-mark {
+  background-image: url('../assets/x.png');
+}
+
+.o-mark {
+  background-image: url('../assets/o.png');
+}
+
+.winning {
+  background-color: rgba(234, 161, 44, 0.2);
+}
+
+.fade-out {
+  opacity: 0.2;
+  transition: opacity 0.5s ease;
+}
+
+.faded {
+  opacity: 0.4;
+} 
