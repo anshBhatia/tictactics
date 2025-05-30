@@ -61,14 +61,16 @@ function emitGameState(room) {
     ...room.gameState,
     playerSymbol: room.host.symbol,
     isYourTurn: room.gameState.isXNext === (room.host.symbol === 'X'),
-    gameState: 'playing'
+    gameState: 'playing',
+    opponentName: room.guest.name
   };
 
   const guestGameState = {
     ...room.gameState,
     playerSymbol: room.guest.symbol,
     isYourTurn: room.gameState.isXNext === (room.guest.symbol === 'X'),
-    gameState: 'playing'
+    gameState: 'playing',
+    opponentName: room.host.name
   };
 
   // Send personalized game state to host using io.to() not socket.to()

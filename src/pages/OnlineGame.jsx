@@ -17,16 +17,20 @@ function OnlineGame({ roomData, onBackToStart }) {
     currentPlayerSymbol,
     isMyTurn,
     gameState,
-    disconnectedPlayer
+    disconnectedPlayer,
+    opponentName
   } = useOnlineGameLogic(roomData);
 
   // Determine player names and info
-  const isPlayerX = currentPlayerSymbol === 'X';
-  const player1Name = isPlayerX ? roomData.playerName : roomData.hostName;
-  const player2Name = isPlayerX ? roomData.playerName : roomData.hostName;
+  const myName = roomData.playerName;
+  const opponent = opponentName || 'Opponent';
 
-  const player1IsActive = isXNext && (isPlayerX ? isMyTurn : !isMyTurn);
-  const player2IsActive = !isXNext && (isPlayerX ? !isMyTurn : isMyTurn);
+  // Player 1 is always the current user, Player 2 is always the opponent
+  const player1Name = myName;
+  const player2Name = opponent;
+
+  const player1IsActive = isMyTurn;
+  const player2IsActive = !isMyTurn;
 
   return (
     <div className="game-container">

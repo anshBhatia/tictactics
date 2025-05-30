@@ -15,6 +15,7 @@ const useOnlineGameLogic = (roomData) => {
   const [gameState, setGameState] = useState('waiting'); // 'waiting', 'playing', 'finished'
   const [isMyTurn, setIsMyTurn] = useState(false);
   const [disconnectedPlayer, setDisconnectedPlayer] = useState(null);
+  const [opponentName, setOpponentName] = useState(null);
 
   // Update faded cell whenever the turn changes
   useEffect(() => {
@@ -45,12 +46,14 @@ const useOnlineGameLogic = (roomData) => {
       setCurrentPlayerSymbol(data.playerSymbol);
       setIsMyTurn(data.isYourTurn || false);
       setGameState(data.gameState || 'playing');
+      setOpponentName(data.opponentName || null);
       
       console.log('Updated state:', {
         playerSymbol: data.playerSymbol,
         isMyTurn: data.isYourTurn,
         gameState: data.gameState,
-        isXNext: data.isXNext
+        isXNext: data.isXNext,
+        opponentName: data.opponentName
       });
     });
 
@@ -168,7 +171,8 @@ const useOnlineGameLogic = (roomData) => {
     currentPlayerSymbol,
     isMyTurn,
     gameState,
-    disconnectedPlayer
+    disconnectedPlayer,
+    opponentName
   };
 };
 
