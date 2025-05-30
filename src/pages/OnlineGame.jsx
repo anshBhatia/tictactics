@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Board from '../components/Board';
 import PlayerInfo from '../components/PlayerInfo';
 import GameStatus from '../components/GameStatus';
 import GameHeading from '../components/GameHeading';
+import Toast from '../components/Toast';
 import useOnlineGameLogic from '../hooks/useOnlineGameLogic';
 
 function OnlineGame({ roomData, onBackToStart }) {
+  const [toastMessage, setToastMessage] = useState(null);
+  
   const { 
     board, 
     isXNext, 
@@ -19,7 +22,7 @@ function OnlineGame({ roomData, onBackToStart }) {
     gameState,
     disconnectedPlayer,
     opponentName
-  } = useOnlineGameLogic(roomData);
+  } = useOnlineGameLogic(roomData, setToastMessage);
 
   // Determine player names and info
   const myName = roomData.playerName;
@@ -31,6 +34,10 @@ function OnlineGame({ roomData, onBackToStart }) {
 
   const player1IsActive = isMyTurn;
   const player2IsActive = !isMyTurn;
+
+  const closeToast = () => {
+    setToastMessage(null);
+  };
 
   return (
     <div className="game-container">
@@ -61,34 +68,20 @@ function OnlineGame({ roomData, onBackToStart }) {
         disappearingCell={disappearingCell}
         fadedCell={fadedCell}
         isXNext={isXNext}
-      />
-
-      <GameStatus 
-        isXNext={isXNext} 
-        winningLine={winningLine}
-        currentPlayer={isXNext ? 'O' : 'X'}
         isOnline={true}
-        isMyTurn={isMyTurn}
         currentPlayerSymbol={currentPlayerSymbol}
       />
 
-      {gameState === 'waiting' && (
-        <div className="waiting-message">
-          <p>Waiting for both players to connect...</p>
-        </div>
-      )}
-
-      {!isMyTurn && gameState === 'playing' && !winningLine && (
-        <div className="turn-indicator">
-          <p>Waiting for opponent's move...</p>
-        </div>
-      )}
-
-      {disconnectedPlayer && (
-        <div className="disconnection-message">
-          <p>{disconnectedPlayer} has left the game</p>
-        </div>
-      )}
+      <div style={{ marginTop: '32px' }}>
+        <GameStatus 
+          isXNext={isXNext} 
+          winningLine={winningLine}
+          currentPlayer={isXNext ? 'O' : 'X'}
+          isOnline={true}
+          isMyTurn={isMyTurn}
+          currentPlayerSymbol={currentPlayerSymbol}
+        />
+      </div>
 
       {winningLine && (
         <div className="game-end-buttons">
@@ -96,6 +89,10 @@ function OnlineGame({ roomData, onBackToStart }) {
             Play Again
           </button>
         </div>
+      )}
+
+      {toastMessage && (
+        <Toast message={toastMessage} onClose={closeToast} />
       )}
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import socketService from '../utils/socketService';
 
-const useOnlineGameLogic = (roomData) => {
+const useOnlineGameLogic = (roomData, setToastMessage = null) => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
   const [winningLine, setWinningLine] = useState(null);
@@ -76,6 +76,9 @@ const useOnlineGameLogic = (roomData) => {
       console.log('Player disconnected:', data);
       setGameState('finished');
       setDisconnectedPlayer(data.playerName || 'Opponent');
+      if (setToastMessage) {
+        setToastMessage(`${data.playerName || 'Opponent'} left`);
+      }
     });
 
     // Listen for game start
@@ -99,6 +102,9 @@ const useOnlineGameLogic = (roomData) => {
     // Listen for player joined (for host)
     socketService.onPlayerJoined((data) => {
       console.log('Player joined:', data);
+      if (setToastMessage) {
+        setToastMessage(`${data.playerName} joined`);
+      }
       // For the host, this means we can start the game soon
       if (roomData.isHost) {
         console.log('Host received player joined notification');

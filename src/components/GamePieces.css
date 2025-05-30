@@ -47,6 +47,10 @@
   background-color: rgba(234, 161, 44, 0.2);
 }
 
+.losing {
+  background-color: rgba(244, 67, 54, 0.2);
+}
+
 .fade-out {
   opacity: 0.2;
   transition: opacity 0.5s ease;
