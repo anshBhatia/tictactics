@@ -10,14 +10,17 @@ const server = http.createServer(app);
 // Configure CORS for Socket.IO
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:5173", // Vite dev server
+    origin: ["http://localhost:5173", "https://tictactixx.netlify.app"],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true
   }
 });
 
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5173", "https://tictactixx.netlify.app"],
+  credentials: true
+}));
 app.use(express.json());
 
 // In-memory storage for rooms (use a database in production)
