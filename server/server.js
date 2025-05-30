@@ -73,6 +73,16 @@ function emitGameState(room) {
     opponentName: room.host.name
   };
 
+  console.log(`Sending to host (${room.host.name}):`, {
+    opponentName: hostGameState.opponentName,
+    playerSymbol: hostGameState.playerSymbol
+  });
+  
+  console.log(`Sending to guest (${room.guest.name}):`, {
+    opponentName: guestGameState.opponentName,
+    playerSymbol: guestGameState.playerSymbol
+  });
+
   // Send personalized game state to host using io.to() not socket.to()
   io.to(room.host.id).emit('game-state-update', hostGameState);
 

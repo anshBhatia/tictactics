@@ -39,6 +39,7 @@ const useOnlineGameLogic = (roomData) => {
     // Listen for game state updates
     socketService.onGameStateUpdate((data) => {
       console.log('Game state update received:', data);
+      console.log('Opponent name from server:', data.opponentName);
       setBoard(data.board || Array(9).fill(null));
       setIsXNext(data.isXNext !== undefined ? data.isXNext : true);
       setWinningLine(data.winningLine || null);
@@ -53,7 +54,8 @@ const useOnlineGameLogic = (roomData) => {
         isMyTurn: data.isYourTurn,
         gameState: data.gameState,
         isXNext: data.isXNext,
-        opponentName: data.opponentName
+        opponentName: data.opponentName,
+        storedOpponentName: data.opponentName || null
       });
     });
 
