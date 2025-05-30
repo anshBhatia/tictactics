@@ -15,16 +15,40 @@ const socketService = {
   disconnect: () => socket.disconnect(),
   
   // Room methods
-  createRoom: (playerName, callback) => {
-    socket.emit('create-room', { playerName }, callback);
+  createRoom: (playerName) => {
+    return new Promise((resolve, reject) => {
+      socket.emit('create-room', { playerName }, (response) => {
+        if (response && response.success) {
+          resolve(response);
+        } else {
+          reject(new Error(response?.error || 'Failed to create room'));
+        }
+      });
+    });
   },
   
-  joinRoom: (roomId, playerName, callback) => {
-    socket.emit('join-room', { roomId, playerName }, callback);
+  joinRoom: (roomId, playerName) => {
+    return new Promise((resolve, reject) => {
+      socket.emit('join-room', { roomId, playerName }, (response) => {
+        if (response && response.success) {
+          resolve(response);
+        } else {
+          reject(new Error(response?.error || 'Failed to join room'));
+        }
+      });
+    });
   },
   
-  getRoomInfo: (roomId, callback) => {
-    socket.emit('get-room-info', { roomId }, callback);
+  getRoomInfo: (roomId) => {
+    return new Promise((resolve, reject) => {
+      socket.emit('get-room-info', { roomId }, (response) => {
+        if (response && response.success) {
+          resolve(response.roomInfo);
+        } else {
+          reject(new Error(response?.error || 'Failed to get room info'));
+        }
+      });
+    });
   },
   
   // Game methods
