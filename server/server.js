@@ -25,7 +25,12 @@ app.use(express.json());
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+  res.status(200).json({ 
+    status: 'ok', 
+    timestamp: new Date().toISOString(),
+    service: 'tictactics-server',
+    version: '1.0.0'
+  });
 });
 
 // In-memory storage for rooms (use a database in production)
