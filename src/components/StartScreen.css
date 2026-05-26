@@ -1,0 +1,518 @@
+.start-screen {
+  min-height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 12px 96px;
+  box-sizing: border-box;
+  overflow: visible !important;
+  width: 100%;
+  position: relative;
+}
+
+.start-screen__desktop-meta {
+  display: none;
+}
+
+.start-screen__inner {
+  width: min(100%, 1280px);
+}
+
+.start-screen__intro {
+  width: 314px;
+}
+
+.start-screen__desktop-grid {
+  display: none;
+}
+
+.heading-container {
+  display: flex;
+  width: 314px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 48px;
+}
+
+.xodown-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.xodown-xo {
+  color: #FFF;
+  font-family: 'Circular Std', 'DM Sans', Arial, sans-serif;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.xodown-down {
+  color: rgba(255, 255, 255, 0.50);
+  font-family: 'Circular Std', 'DM Sans', Arial, sans-serif;
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.xodown-desc {
+  color: #FFF;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 0.8;
+  margin-top: 12px;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow: visible;
+  scroll-snap-type: x mandatory;
+  width: 322px;
+  margin: 0 auto 32px auto;
+  box-sizing: border-box;
+}
+
+.carousel-card {
+  display: flex;
+  width: 322px;
+  padding: 35px 39px;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  border-radius: 32px;
+  background: #9564FE;
+  scroll-snap-align: center;
+  flex-shrink: 0;
+}
+
+.carousel-card:first-child {
+  margin-left: 0;
+}
+
+.carousel-heading-container {
+  display: flex;
+  height: 166px;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.carousel-heading {
+  color: #FFF;
+  text-align: center;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 108%;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+.carousel-subheading {
+  color: #FFF;
+  text-align: center;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  box-sizing: border-box;
+  word-break: break-word;
+}
+
+.carousel-btn {
+  display: flex;
+  padding: 12px 14px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  background: #FFF;
+  border: none;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.carousel-btn-text {
+  color: #000;
+  text-align: center;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.carousel-outer-wrapper {
+  width: 100vw;
+  overflow: visible;
+  margin-left: calc(50% - 50vw);
+}
+
+.carousel-native {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 0 32px 0;
+  padding-bottom: 32px;
+  padding-left: calc(50vw - 161px);
+  padding-right: calc(50vw - 161px);
+  box-sizing: border-box;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.carousel-native::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .start-screen {
+    padding: 36px 40px 40px;
+    position: relative;
+  }
+
+  .start-screen__desktop-meta {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    top: 36px;
+    left: 50%;
+    width: 1200px;
+    height: 65px;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  .start-screen__inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 1006px;
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+  }
+
+  .start-screen__intro {
+    width: 592px;
+    margin: 0;
+  }
+
+  .carousel-outer-wrapper {
+    display: none;
+  }
+
+  .start-screen__desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 322px);
+    gap: 20px;
+    width: 1006px;
+    margin: 0;
+  }
+
+  .carousel-card--desktop {
+    width: 322px;
+    min-height: 290px;
+    justify-content: space-between;
+  }
+
+  .start-screen__desktop-meta .online-meta--rich {
+    gap: 14px;
+  }
+
+  .start-screen__desktop-meta .online-meta__icon-button {
+    width: 64px;
+    height: 64px;
+  }
+
+  .start-screen__desktop-meta .online-meta__pill {
+    width: 267px;
+    min-height: 65px;
+    padding-top: 22px;
+    padding-bottom: 22px;
+  }
+
+  .start-screen__desktop-grid .carousel-subheading {
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-native {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  
+  .carousel-card {
+    width: calc(100vw - 64px) !important;
+    height: 326px !important;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 600px) {
+  .start-screen {
+    padding: 85px 12px 96px;
+  }
+
+  .start-screen__intro {
+    width: 314px;
+    margin: 0 auto;
+  }
+
+  .carousel-heading,
+  .carousel-subheading {
+    padding: 0;
+  }
+
+  .carousel-card {
+    width: 322px !important;
+    padding: 35px 39px !important;
+  }
+
+  .carousel-heading-container {
+    width: 272px;
+  }
+
+  .carousel-outer-wrapper {
+    margin-top: 48px;
+  }
+}
+
+/* Figma's "slow" easing curve for smooth transitions */
+/* :root {
+  --figma-slow-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+} */
+
+/* Simple transition approach - prevent any positioning jumps */
+/* .carousel-outer-wrapper.transitioning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-native.transitioning {
+  position: relative;
+  width: 100%;
+  height: 100%;
+} */
+
+/* Completely hide other cards during transition */
+/* .carousel-card.fading {
+  display: none !important;
+} */
+
+/* Expanding card - ensure smooth transition with Figma's slow easing */
+/* .carousel-card.expanding {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 1001;
+  margin: 0 !important;
+  width: 322px !important;
+  height: 250px !important;
+  min-height: 250px !important;
+  max-height: 250px !important;
+  overflow: hidden !important;
+  transition: width 300ms var(--figma-slow-easing), height 300ms var(--figma-slow-easing), min-height 300ms var(--figma-slow-easing), max-height 300ms var(--figma-slow-easing);
+}
+
+.carousel-card.expanding.animate {
+  width: calc(100vw - 24px) !important;
+  height: 375px !important;
+  min-height: 375px !important;
+  max-height: 375px !important;
+}
+
+.carousel-card.expanding .carousel-heading-container {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 150ms var(--figma-slow-easing), transform 150ms var(--figma-slow-easing);
+  pointer-events: none;
+}
+
+.carousel-card.expanding .carousel-btn {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: auto;
+  margin-top: 0;
+}
+
+.create-room-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  opacity: 0;
+  transition: opacity 150ms var(--figma-slow-easing) 75ms, transform 150ms var(--figma-slow-easing) 75ms;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.carousel-card.expanding .create-room-content {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.input-container {
+  display: flex;
+  width: 248px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.input-label {
+  align-self: stretch;
+  color: #FFF;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.name-input {
+  color: #FFF;
+  text-align: center;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: stretch;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 8px 0;
+}
+
+.name-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.share-btn {
+  display: flex;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  background: #FFF;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 150ms var(--figma-slow-easing) 75ms, transform 150ms var(--figma-slow-easing) 75ms;
+}
+
+.carousel-card.expanding .share-btn {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.share-btn-text {
+  color: #000;
+  text-align: center;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.cancel-btn {
+  display: flex;
+  padding: 12px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.16);
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 150ms var(--figma-slow-easing) 150ms, transform 150ms var(--figma-slow-easing) 150ms;
+}
+
+.carousel-card.expanding .cancel-btn {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cancel-btn-text {
+  color: #FFF;
+  text-align: center;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.cancel-btn:hover {
+  background: rgba(0, 0, 0, 0.24);
+}
+
+@media (max-width: 768px) {
+  .carousel-card.expanding {
+    width: calc(100vw - 24px) !important;
+    height: 375px !important;
+  }
+  
+  .input-container {
+    width: 90%;
+  }
+} */
+
+ 

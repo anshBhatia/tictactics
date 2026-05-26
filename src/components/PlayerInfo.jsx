@@ -1,10 +1,11 @@
 import React from 'react';
 
-const PlayerInfo = ({ player, emoji, isActive }) => {
+const PlayerInfo = ({ player, isActive }) => {
   return (
-    <div className={`player-card ${isActive ? 'active' : ''}`}>
-      <div className="player-emoji">{emoji}</div>
-      <div className="player-name"> {player}</div>
+    <div className={`multiplayer-player-card ${isActive ? 'active' : 'inactive'}`}>
+      <div className="player-name-text">
+        {player}
+      </div>
     </div>
   );
 };
